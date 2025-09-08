@@ -50,7 +50,22 @@ HOW TO USE
     .hero { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
     .hero h1 { font-size: clamp(28px, 3.5vw, 42px); margin: 0 0 6px; line-height: 1.2; }
     .hero p { margin: 0; color: var(--muted); }
-    .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+    /* add these */
+    .avatar-wrap {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.2);     /* <-- zoom amount (1.0 = no zoom) */
+      transform-origin: center;
+      border: 0;                 /* border is on the wrap now */
+    }
+
 
     /* Sections */
     section { margin-top: 40px; }
@@ -86,7 +101,9 @@ HOW TO USE
   <header class="wrap">
     <div class="hero">
       <div class="row">
-        <img class="avatar" src="/profile_pic_2.jpg" alt="Portrait of Kareem Diab" />
+        <div class="avatar-wrap">
+          <img class="avatar" src="/profile_pic_2.jpg" alt="Portrait of Kareem Diab" />
+        </div>
         <div>
           <h1>Kareem Diab</h1>
           <p>Research interests: quantum information, complexity theory, mathematical physics. I build simple tools and write occasionally.</p>
