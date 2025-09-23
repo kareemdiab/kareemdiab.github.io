@@ -84,8 +84,37 @@ HOW TO USE
     figure figcaption { padding: 8px 10px; font-size: 14px; color: var(--muted); }
 
     /* Video embeds */
-    .video { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-    .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video {
+      position: relative;
+      width: 320px;        /* fixed width, tweak as you like */
+      aspect-ratio: 16/9;  /* keeps the correct ratio */
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      flex: 0 0 auto;      /* so it doesn’t stretch in flexbox */
+    }
+
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory; /* optional: nice snapping */
+    }
+
+    .video-row .video {
+      scroll-snap-align: start;
+    }
+
+
 
     /* Footer */
     footer { margin-top: auto; border-top: 1px solid var(--border); }
@@ -128,11 +157,11 @@ HOW TO USE
       <h3>Published</h3>
       <div class="card list">
         <div class="pub">
-          <div><strong>Quantum Energy Minimization</strong></div>
-          <div class="meta">Your Name; Venue (Year). 
+          <div><strong>Quantum Algorithm for Graph Isomorphisms</strong></div>
+          <div class="meta">In progress</div>. 
             <a href="#">PDF</a> · <a href="#">arXiv</a> · <a href="#">Code</a>
           </div>
-          <div class="muted">One-sentence summary of the contribution.</div>
+          <div class="muted">.</div>
         </div>
         <!-- Add more published papers here -->
       </div>
@@ -141,9 +170,9 @@ HOW TO USE
       <h3>In Progress / Ideas</h3>
       <div class="card list">
         <div class="pub">
-          <div><strong>Quantum Complexity & Topology</strong></div>
-          <div class="meta">Working draft, not yet submitted</div>
-          <div class="muted">Exploring links between representation theory and quantum algorithm lower bounds.</div>
+          <div><strong>Quantum Kernel Symmetry</strong></div>
+          <div class="meta">In progress</div>
+          <div class="muted">Examining how group structure in data can inform feature mapping for quantum kernels..</div>
         </div>
         <!-- Add more in-progress ideas here -->
       </div>
@@ -157,7 +186,7 @@ HOW TO USE
       <h2>Projects</h2>
       <div class="card list">
         <div>
-          <strong>Quantum Matrix Multiplier</strong> — This is a python simulation of a quantum circuit implementation to multiply to nxn matrices. The circuit itself does not give much of a speedup but the python classes are useful to simulate other circuits out of 1 and 2-qubit gates.; <a href="https://github.com/kareemdiab/QuantumMatrixMultiplier">repo</a>
+          <strong>Quantum Matrix Multiplier</strong> — This is a python simulation of a quantum circuit implementation to multiply to nxn matrices. The circuit itself does not give much of a speedup but the python classes are useful to simulate other circuits out of 1 and 2-qubit gates. <a href="https://github.com/kareemdiab/QuantumMatrixMultiplier">repo</a>
           <div class="muted">What it does, status, and a link if live.</div>
         </div>
      
@@ -170,12 +199,15 @@ HOW TO USE
       <div class="list">
         <div class="video">
           <iframe
-            src="https://www.youtube.com/embed/g1PtvpPV7XE"
-            title="YouTube video player"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRep20Hay8dQVi_rRz4YIMeV"
+          title="YouTube playlist"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+      </iframe>
+
         </div>
        
       
