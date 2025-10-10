@@ -115,6 +115,37 @@ HOW TO USE
     }
 
 
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 32px; height: 32px;
+      background: white;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+
 
     /* Footer */
     footer { margin-top: auto; border-top: 1px solid var(--border); }
@@ -255,7 +286,7 @@ HOW TO USE
     </section>
 
     <!-- Art gallery -->
-    <section id="art">
+    <!-- <section id="art">
       <h2>Art</h2>
       <div class="grid">
         <figure>
@@ -263,7 +294,6 @@ HOW TO USE
           <figcaption>Eye, 2024.</figcaption>
         </figure>
       
-        <!-- Add more figures as needed -->
       </div>
     </section>
     
@@ -274,11 +304,43 @@ HOW TO USE
           <img src="/astro/helix_nebula.png" alt="helix_nebula" />
           <figcaption>Helix Nebula, 2025.</figcaption>
         </figure>
- 
        
-        <!-- Add more figures as needed -->
+      </div>
+    </section> -->
+
+    <section id="art">
+      <h2>Drawings/Paintings</h2>
+      <div class="grid">
+        <a href="#art1">
+          <figure>
+            <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+            <figcaption>Eye, 2025</figcaption>
+          </figure>
+        </a>
+    
       </div>
     </section>
+    <section id="art">
+      <h2>Astrophotography</h2>
+      <div class="grid">
+        <a href="#art2">
+          <figure>
+            <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+            <figcaption>Helix Nebula, 2025.</figcaption>
+          </figure>
+        </a>
+    
+      </div>
+    </section>
+
+    <div class="lightbox" id="art1">
+      <a href="#art" class="close"></a>
+      <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+    </div>
+    <div class="lightbox" id="art2">
+      <a href="#art" class="close"></a>
+      <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+    </div>
 
     <!-- Contact / Links -->
     <section id="contact">
