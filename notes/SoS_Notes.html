@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes and thoughts on SoS lifting — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS inotes and thoughts</h1>
+    <p class="muted">March 2025</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+        Today I began thinking more precisely about the structure of the 3XOR instance and what the conflict graph is going to look like. 
+        What I believe to have found today is that its not the upper bound on the maximum eigenvalue that is going to be interesting for these 
+        SoS-hard instance-hamiltonians, but rather the lower bound, which is the size of the largest independent set. I am still not sure though, my logic was 
+        the following, bipartite expansion of the original graph should make it less likely for clauses to share a lot of vertices, including the cases when the number vertices they 
+        share is odd. But writing this out now it does not sound right. Ok its a 3XOR instance, the clauses won't share all 3 variables by construction, they can either share 2, 1, or 0. 
+        My gut tells me it should be significantly less likely that any two clauses share 2 variables, which may come from expansion: like if a bunch of clauses all share 
+        2 variables, you can probably get some estimate of the boundary and show that its smaller than the expansion gaurantee. So it seems like 
+        most of the probability mass should be on either sharing 1 variable or none. If its none, the terms commute, so the question is how many 
+        clauses on average are going to share 1 vertex? 
+      </p>
+
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
