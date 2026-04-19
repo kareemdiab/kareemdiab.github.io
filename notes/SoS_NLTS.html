@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NLTS, qLDPC Codes, and the Quantum PCP Landscape — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS propbelm</h1>
+    <p class="muted">March 2025</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+   In this work, we explore several transformations of a constraint satisfaction problem to a local hamiltonian. Our goal is to understand which constructions preserve the hardness of the problem against the sum of squares hierarchy (SoS), and how the original SoS lower bounds (integrality gaps) shift in the process. The local hamiltonians we consider will in general represent a sum over noncommuting monomials, consequently, in this work we consider non-commutative SoS hierarchies and their dual semi-definite programs over moment matrices, such as the NPA hierarchy. 
+
+
+There exists a simple CSS hamiltonian that one can construct from a CSP instance by summing one local hamiltonian representing the exact CSP instance in the X (hadamard) basis, and another in the Z (computational) basis. We employ the following method to represent a classical CSP as a local hamiltonian, namely by converting a constraint such as xixjxk in {+-1} variables, to the pauli string ZiZjZk acting on qubits i,j, and k. It can easily be seen that this transformation preserves the value of the polynomial representing the original CSP for states in the computational basis. We establish some preliminary results on these CSS hamiltonians by observing that the following combinatorial techniques can be applied to such a hamiltonian in anticommuting bases. Namely, the maximum eigenvalue of the local hamiltonian will be bounded above and below by two different functions on the underlying “conflict” graph: the Lovasz Theta function of the graph, which is the output of a simple SDP, will provide an upper bound, and the size of the largest independent set will give a lower bound. The proofs of these spectral bounds for hamiltonians with anti-commuting terms are well known. 
+
+We begin by considering the 3-XOR instances constructed in Grigoriev’s sum of squares lower bounds. These 3-XOR instances are represented by random bipartite graphs with small-set expansion properties. We note that this graph differs from the conflict graph in what they represent, the bipartite graph for the CSP instance draws an edge between vertices on the left (clauses), to 3 vertices on the right (representing the variables in the clause). The conflict graph is constructed only after making the transformation to a local hamiltonian, and edges are drawn between vertices representing monomials in the (3-local) hamiltonian only if they anticommute. This occurs only when one vertex represents a pauli X string and the other a pauli Z string, AND the number shared qubits that they act on is an odd number. Interestingly, the expansion properties of the original bipartite graph make it less likely for any two monomials to share an odd number of qubits, which ends up lower bounding the largest independent set of the resulting conflict graph, and increasing the maximum eigenvalue of the resulting hamiltonian. It is as though the property that makes the 3-XOR instances simultaneously unsatisfiable and hard for SoS, actually increases its “satisfiability” as a local hamiltonian. 
+
+
+Another reason we aim to analyze these particular CSS hamiltonians is to strengthen the analogy between Grigoriev’s theorem, and the No Low Energy Trivial States (NLTS) theorem [Anshu, Breuckmann and Nirkhe]. Both theorems proved unconditional lower bounds against a restricted model of computation, by using a form of bipartite expansion to construct CSPs or code instances with all near satisfiable or low energy states being “hard” to certify. One obvious hope is that these CSS hamiltonians may also have the NLTS property, potentially opening up new avenues to construct families of NLTS hamiltonians. Moreover, if they do indeed exhibit NCSoS integrality gaps, we may be able to construct NLTS hamiltonians with additional hardness guarantees against efficient classical algorithms, and assuming the unique games conjecture there may be an NP-hardness implication for these hamiltonians as well. 
+
+There are a few intermediate steps we propose that are also of interest. In particular, though the CSS hamiltonians are our main object of study, it may be helpful to first identify whether integrality gaps persist onto local hamiltonians diagonalized in two arbitrary bases which are not necessarily local such as the pauli X and Z bases. There are several routes to consider in this direction, we could consider using as the second basis, a rotation of the Hz hamiltonian by an arbitrary unitary circuit acting on the entire system. Such freedom in constructing our local hamiltonians may be helpful to identify first what relationship between the first and second basis are really necessary to preserve SoS-hardness. 
+
+Another promising direction is to first derandomize the SoS-hard CSP instances before making our local hamiltonian. It was not known how to do this while preserving the integrality gap until recently when [Hopkins, Lin 2022] constructed the first explicit 3XOR instances that were SoS-hard, through a form of small-set high dimensional expansion inspired by quantum LDPC codes. Their result relies heavily on the algebraic properties of the underlying chain complex of such high dimensional expanders, and we are interested as to whether these properties may also assist in the analysis of the local hamiltonians we are studying.
+
+      </p>
+
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
