@@ -21,13 +21,13 @@
   <main class="wrap">
     <section class="card">
       <p>
-       Today was pretty interesting, I realized I had been looking at the problem ENTIRELY wrong. My whole plan was the following, 
+       Today was pretty interesting, I realized I had been looking at the problem entirely wrong. My whole plan was the following, 
        use the Lovasz Theta (LT) function to obtain a "good" bound on the maximum eigenvalue of the CSS hamiltonian, and then show that 
        there is a gap between n levels of the NPA hierarchy, and the value of the LT function, meaning that the LT value is tighter than 
        degree n SoS. But I forgot to take into account, that LT is the value of a semi-definite program itself, which is certainly captured by 
        much less than n levels of the SoS hierarchy.. Anyways I am not too bummed about this, because as soon as I realized that, 
-       I realized another stupidly obvious fact, I ALREADY have a pretty narrow window of what the maximum eigenvalue can be for the CSS 
-       hamiltonian. In particular, if the value of the original instance is 1/2 plus delta, then the max eigenvalue of both the Hx summand and the Hz 
+       I realized another stupidly obvious fact, I already have a pretty narrow window of what the maximum eigenvalue can be for the CSS 
+       hamiltonian! In particular, if the value of the original instance is 1/2 plus delta, then the max eigenvalue of both the Hx summand and the Hz 
        summand will be 1/2 plus delta each. So there is an immediate bound from the triangle inequality on operator norms: the max eigenvalue of H = Hx + Hz
        is 1 + 2delta. On top of that, consider a 1/2 plus delta satisfiable assignment to the 3XOR instance, which we know is the maximum, this 
        corresponds to a state in the computational basis which will achieve the maximum on the Hz summand, and due to the fact that Z and X are 
