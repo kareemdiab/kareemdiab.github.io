@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes and thoughts on SoS lifting — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS notes and thoughts</h1>
+    <p class="muted">April 2026</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+        I learned more about chernoff bounds and markov/chebyshev inequalities today, I was getting tired of glossing my eyes over all these probabilistic 
+        arguments that seem way too powerful. I was surprised that the proof of the chernoff bound was actually a very simple calculation 
+        and a pretty intuitive result. Anyways, that's another tool in the toolbox I hope to use, part of the reason I wanted to familiarize myself with these 
+        was that I think it may be helpful in understanding this conflict graph, which is really turning out to be the first main problem in this project. 
+        So I have two routes I am considering, using a probabilistic/heuristic method to get some sort of bound on the theta function, which is pretty appealing since 
+        earlier I was thinking that when I started this project, I really wanted some way to connect the expansion properties of the 3XOR instance to the analysis 
+        of the local hamiltonian. Now I realize that maybe the right way to do that is indirectly, expansion for Grigoriev's 3XOR instance is just a 
+        result of the fact that the graph was sampled randomly with the right parameters, so if I treat the conflict graph as that, perhaps some specific version of 
+        an Erdos-Renyi random graph, I would be able to use the known results about the theta function for random graphs and I would be making use of the same 
+        properties that underly the graphs expansion. One caveat though, the clause-variable graph is the one sampled from the erdos-renyi distribution, 
+        the conflict graph is induced from it but its certainly not pulled from the same distribution. Although I did some calculations today on the expected degree 
+        of the conflict graph and it doesn't depend on n, so its like approximately d-regular for some constant d, giving me a little bit of hope 
+        that it really is just Erdos-Renyi with some wierd parameters. Anyways thats route 1, and another thing that makes this route appealing is that 
+        the tools to bound the theta function for random graphs uses ideas from random matrix theory, which I have been wanting to learn about. 
+
+        Route 2, is what seems like the hard way, I would have to get more than a surface level understanding of these Johnson association schemes. 
+        In particular, I need to understand how exactly people have gotten those beautiful combinatorial formulas bounding the theta number for these specific johnson graphs, 
+        and then determine whether or not I can generalize those ideas to my weird bipartite mess, or if my weird bipartite mess already fits into that framework 
+        which is not at all obvious right now. 
+
+        Today was good overall! I spent most of the time writing so that I could submit the poster idea so it feels like I didn't get a lot of thinking done 
+        but I actually feel a lot more clear headed about the whole project now. On top of that I actually got a mini result as well, I did by hand the 
+        probabilistic calculation for the approximate degree of the conflict graph, and I got approximately 450 when m = 100n! Pretty cool number I guess, 
+        what I am starting to think now is like how I can characterize these conflict graphs from the clause variable structure alone, that would streamline 
+        this process if I want to try other hamiltonians and then I could say something like, given this type of 3xor instance, its local hamiltonian has 
+        this bound on the eigenvalue which comes from a simple SDP (Lovasz Theta). I just love saying "The Lovasz Theta Function". 
+      </p>
+
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
