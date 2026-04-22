@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes and thoughts on SoS lifting — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS notes and thoughts</h1>
+    <p class="muted">April 2026</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+        Today was busy but I made some progress and hit a bit of a wall. I tried to dig deeper into the johnson scheme stuff to see if I could 
+        generalize to my specific graph but I ended up in extremal combinatorics and set theory territory. I was unable to get a deeper understanding 
+        of how people are actually proving these bounds for the lovasz number of the association schemes, at the same time I am starting to get more 
+        convinced that my random graph won't fit into this framework. Simply because I haven't seen any of these non/random proofs deal with graphs 
+        that aren't defined in the general (n choose k) vertices fashion, which is like a specific subgraph built out of a complete Kn graph. My conflict graph Gamma
+        is not like this in that it's 1. random, 2. not built out of the complete Kn graph, so even the clause variable graph which Gamma is built from doesn't have all possible 
+        combinations of k, and 3. it's bipartite.. On the brightside I would say that I am more familiar with what these johnson schemes and t-intersecting set families really 
+        are. So I have a better idea of how my Gamma fits into this, which it seems like it doesn't directly. It is looking like randomness is going to be the way to go. I have begun 
+        reading over the lovasz number for erdos renyi random graphs and am already starting to get a lot more ideas than route 1. On top of that, my little win of the day is that I 
+        understood a little more how certain graphs with symmetries have their lovasz number reduce to a linear program. It's like, say you could permute the entries of the matrix 
+        you're optimizing over. You can show that the value of the program stays the same with respect to the permuted matrix, and then if the underlying graph has some edge/vertex symmetries,
+        then the symmetries might allow the entries to stay within little sub-orbits within the matrix when being permuted, so you can group each entry into the orbit that it stays in, and then just average 
+        over all the other entries within that orbit and suddenly the number of entries you are optimizing over becomes the number of orbits, which will be less 
+        than n^2 and won't depend on each other the way the entries of the initial matrix would (I guess, that last part I don't fully understand because how do you ensure 
+        its still psd for example?) Maybe there is an easier way to enforce that constraint if like the entire bottom left triangle is constrained to be the same values and the same for the upper right triangle, for example.
+      </p>
+
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
