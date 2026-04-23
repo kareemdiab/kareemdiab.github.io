@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes and thoughts on SoS lifting — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS notes and thoughts</h1>
+    <p class="muted">April 2026</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+        Today was pretty thrilling, I have been trying to get better at the type of thinking required to actually do theoretical research, which is hard, 
+        because I don't really have any way of knowing what is the "right" way to think. But I believe I am on the right track, it has been hard 
+        to get out of the cycle of thinking that some great idea is going to just occur to me, like the thousands of beautiful, complex theorems I 
+        have been exposed to. Each time I think wow how did this person think of that, it cannot be like that, I refuse to believe these ideas just occur to people 
+        fully fleshed out, in all their glory. 
+        I have been trying to adopt a more incremental mentality, our mortal brains are so puny and weak against the monument of all the acquired human knowledge. 
+        I am relatively good at math, and I can hardly visualize sets with more than 5 elements in them, not to mention functions between them. 
+        Research has to be done in small steps, and I believe I have to sharpen my skill at recognizing what is the right probing question in order to 1, increase my understanding 
+        in a way that will be helpful for what I am trying to accomplish, 
+        and 2, obtain some mini pseudo-result that will either be a step towards the full goal or at least clear up some confusion. Today I felt like I got close to something, and I felt it twice, each on a different topic. 
+        Though one of them ended up being wrong and the second I am not sure if it will work out or not, I believe I grew as a researcher today. 
+        Enough vagueness, the first thing that happened was I asked if I could modify the proof that the lovasz number upper bounds the commutation index of a set of operators. 
+        I wanted something more specific to sets of operators with bipartite structure like the CSS hamiltonians I am looking at, I figured, that kind of structure is 
+        certainly relevant when you want to know how things commute in the whole system, so I must be able to get some kind of more specific or perhaps stronger inequality 
+        if I assume the bipartite structure. However, I realized only after my modified version of the proof that the thing I was trying to do was ill-motivated. 
+        The proof was already for a more general set of operators, so any hope of "strengthening" the proof, would be by actually strengthening the inequality, 
+        and as an upper bound, I would have to lower the upper bound, but there are two problems with this, the bipartite structure gives you more commutativity (within each partitition 
+        everything commutes), so the spectral norm will only go up and its unlikely that I would be able to show a tighter bound for a quantity that is in fact greater? Question mark because 
+        now I am not sure, maybe there is some structure I can exploit to get a tighter bound even though the quantity is in fact greater. The second problem was that this was completely out of line 
+        with the whole research program, I mean maybe that is not a bad thing because at the end of the day I want to find things that are true, but still I should have at least considered the following before 
+        attempting this, the whole thing I want to prove is an SDP lower bound, showing a tighter bound on the inequality certified by an SDP would be doing the opposite. Again yea that's not a problem 
+        if the thing I initially wanted ends up being false but I didn't even realize that before I started working so I should be more intentional. The reason I am happy about this failure is because I got 
+        to see firsthand why my modification did NOT work. It was pretty clean, I made a slight adjustment to the assumptions in the beginning (assuming the bipartiteness), and I followed the proof through and right near the end, 
+        the way I had to split up the set of operators gave me a term that was a bilinear form on a matrix (which was supposed to represent a feasible matrix for the lovasz program), when in the original proof, 
+        that term was a quadratic form. Since the actual program maximizes over quadratic forms, and not bilinear forms, I was unable to use the relationship to the lovasz theta function, so it was a very clean 
+        idea that broke my modification, and something about that 30 minutes felt right, I felt like I pushed the proof in an interesting way and it quickly snapped back into place. I am happy with this because I haven't 
+        had the courage until now to actually try these sorts of things, because most of the time I feel like this is probably stupid I am wasting my time. But I think I need to be doing this consistently, 
+        and getting a feel for what makes proofs work and where they might be improved, and eventually build intuition for what kinds of things can be proven with current techniques and methods. 
+        The second thing I did, was I actually found the object to describe the stupid bipartite transformation that happens to the conflict graph that I have been unable to put cleanly into math myself. 
+        It is called a "bipartite double cover", it is a type of tensor product on graphs and specifically, a way to take a graph and get a sort of symmetric bipartite graph out of it. 
+        This is exactly the transformation that describes what happens to the underlying conflict graph when you move to the a two basis hamiltonian. There is only a handful of papers that even mention this 
+        type of graph transformation and there is a very small wikipedia article on it. So it is kind of perfect for me to try and prove little things about it. This leads me to the thing I am trying to do now, 
+        turns out bipartite graphs are "perfect", which implies that the lovasz number of these graphs are actually equal to the independence number. Since the graph before the bipartite double cover transformation 
+        is much closer to things that have actually been studied, namely johnson scheme graphs, I figured, if there is a well-defined way that these graph properties transform under this bipartitification, like the independence number, 
+        then I don't have to deal with this bipartite nonsense anymore and I can just use johnson scheme results. So I began working out some small examples and it started to seem like the independence number of the 
+        bipartite graph will me the maximum of the following two quantities: the size of the original vertex set, or the original independence number * 2. This is the thing I was trying to prove, I won't get into the details, 
+        but morally this thing really seems to be true, but I can't seem to rule out that there might be some weird combination of vertices in the bipartite graph that actually exceeds this value. In fact that was the thing I wanted 
+        to show at first because help show that the lovasz/indpendence number is bounded away from the spectral norm of the hamiltonian and I might be able to get an SDP lower bound, but it really seems like the initial statement is true. 
+        I spent some time with python generating potential counter examples and even using erdos-renyi random graphs but everything was following the rule. So I figured it might be easy to prove and I began trying to prove it. 
+        I feel like I came really close but there were a few issues, I even typed it up at one point into latex because I thought it was correct but there was an error, and even now I feel like I am right there but it is just out of reach. 
+        Anyways, those were the two things, that was a pretty fun day but I have to take a few days off unfortunately for finals. 
+        </p>
+
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
