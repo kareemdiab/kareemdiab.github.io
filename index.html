@@ -232,50 +232,46 @@ HOW TO USE
    <section id="research">
   <h2>Research</h2>
 
-
-
-
-   <div>Research Summary
-    <p> My research interests are in quantum complexity theory, quantum algorithms, 
-      and semi-definite programming hierarchies. On the quantum side, I mainly study hamiltonian complexity and 
-      anything related to the quantum PCP conjecture, and on the SDP side I am interested in the NPA hierarchy 
-      in the context of nonlocal games, and the sum of squares (SoS) hierarchy for constraint satisfaction problems (CSPs).
-      Lately I have been exploring a connection between CSP instances that are hard to approximate for SoS, 
-      and local hamiltonians whose low energy states cannot be approximated by low depth quantum circuits. </p>
-
-   </div>
-
-
-<div class="card list">
-
-    <div><strong>Lifting SoS Integrality Gaps to Two Basis Hamiltonians</strong></div>
-
-    <div class="muted">
-    I am interested in whether lower bounds against the SoS hierarchy (integrality gaps) can be 
-    lifted into local hamiltonians with similar integrality gaps in the non-commutative setting (NPA hierarchy). (And whether or not the 
-    hamiltonians could have the NLTS property).
-    <a href="/notes/tqc_abstract.pdf">abstract</a>
-
-    <a href="/notes/tqc_summary.pdf">Summary</a>
-
-    </div>
-
- 
-       <!-- <div><strong>Pseudorandomness and constant depth quantum circuits</strong></div>
-    <div class="meta">Exploratory Direction</div>
-    <div class="muted">
-      Some recent works have shown that constant depth quantum circuits can actually generate pseudorandomness to a certain degree, 
-      while conjecturing that certain stronger forms of pseudorandomness remains out of reach for shallow quantum circuits. 
-      On top of this another paper has connected quantum circuit randomness to a necessary increase in hamiltonian locality. I 
-      am exploring whether the latter could shed light on the former.
-
-    </div> -->
-
+  <div class="research-intro">
+    <p>
+      I work at the intersection of two areas. The first is the study of powerful 
+      optimization algorithms called <strong>Sum-of-Squares (SoS)</strong> hierarchies, 
+      which are among the best known tools for solving hard combinatorial problems. 
+      A central question is: when do these algorithms fundamentally fail, and why?
+    </p>
+    <p>
+      The second is <strong>quantum complexity theory</strong>, which asks how hard it is 
+      to prepare or simulate quantum states. A landmark recent result — the NLTS theorem — 
+      showed that certain quantum systems have low-energy states that no shallow quantum 
+      circuit can reach. Surprisingly, the proof uses the same mathematical structure 
+      (expander graphs) that explains why SoS fails on certain hard instances.
+    </p>
+    <p>
+      My current work explores this connection. I construct quantum Hamiltonians directly 
+      from the hard instances that break SoS, and ask whether the classical hardness 
+      survives — and strengthens — in the quantum setting. If it does, these Hamiltonians 
+      would be hard for both shallow quantum circuits and powerful classical optimization 
+      algorithms simultaneously.
+    </p>
   </div>
 
-</div>
-    </section>
+  <h3 style="margin-top: 2em; margin-bottom: 0.8em;">Projects</h3>
 
+  <div class="card list">
+    <div><strong>Lifting SoS Integrality Gaps to Two-Basis Hamiltonians</strong></div>
+    <div class="muted" style="margin-top: 0.5em;">
+      Investigates whether classical SoS lower bounds (integrality gaps) lift to 
+      non-commutative SoS lower bounds for CSS-type Hamiltonians built from the same 
+      constraint structure, with connections to quantum error correction and the NLTS theorem.
+    </div>
+    <div style="margin-top: 0.6em;">
+      <a href="/notes/tqc_abstract.pdf">Abstract</a>
+      &nbsp;·&nbsp;
+      <a href="/notes/tqc_summary.pdf">Technical summary</a>
+    </div>
+  </div>
+
+</section>
  <section id="notes">
   <h2>Research Notes & Logs</h2>
   <div class="card">
