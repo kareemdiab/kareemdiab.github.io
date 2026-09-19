@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes and thoughts on SoS lifting — Kareem Diab</title>
+  <meta name="description" content="Notes on NLTS Hamiltonians, qLDPC codes, and the quantum PCP conjecture." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" /> <!-- optional if you later split CSS -->
+</head>
+<body>
+
+  <header class="wrap">
+    <nav>
+      <a href="/">← Back to Home</a>
+    </nav>
+    <h1>SoS_NLTS notes and thoughts</h1>
+    <p class="muted">May 2026</p>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <p>
+        The last couple days I have been quite hopelessely stuck on something, trying to generalize the proof of Grigoriev's theorem to a two-basis hamiltonian. 
+        Funnily enough, I know that what I am trying to do will not work, I just can't justify trying anything else until I see precisely why the current proof fails 
+        to generalize. There is a very simple argument that shows for anticommuting operators P and Q, no pseudo expectation can set both of them to 1, in particular there 
+        is a low degree polynomial P to which E[P^tP] gets assigned a negative value, hence E is not a valid pseudo expectation. However, as I followed the proof of Grigoriev's 
+        theorem, everything seemed to go through in the noncommutative case exactly as in the commutative case, which meant there was something about the proof I was not understanding, 
+        the last two days I believe to have narrowed down precisely what that is. The algorithm which defines the pseudo expectation is not even well-defined in the anticommutative case, 
+        hence the equivalence class argument and the ability to factor E[PQ] into E[PR]E[RQ] no longer applies (both of which are used in the proof of positivity). In particular you can show that after assigning E[P] and E[Q] to 1, and running the 
+        algorithm, you immediately get a contradiction on the value of E[PQP], which should be -1, but ends up getting set to 1 along some derivation. This is not quite the resolution I was hoping for, 
+        I was stupidly hoping that whatever the reason was, it would elucidate that the max value which one could set to anti commuting operators P and Q would be 1/sqrt(2). Since one can actually prove with 
+        a similar low degree polynomial that this is a true maximum one can set to anticommuting operators while still being a valid pseudoexpectation. I was hoping I could just modify the algorithm to set 1/sqrt(2) for the hard constraints,
+        and then everything would go through the exact same and I would get a (slightly thinner) integrality gap. Given the fact that the algorithm does not even work for anticommuting operators however, 
+        it seems I will need to define a whole new procedure to construct the pseudodistribution. I believe to have made some progress on this front, to keep track of signs that may arise from anticommutation, I decided to define a function f(P,Q) which takes two 
+        operators, and returns 1 if they commute, and -1 if they anticommute. This function turns out to have some nice properties, it is symmetric: f(P,Q) = f(Q,P), bilinear: f(PR,Q) = f(P,Q)f(R,Q), and invariant under permutations within either 
+        argument: f(Q1***Qn, P) = f(Qp1***Qpn, P). I am thinking I might be able to include this in whatever rule will define the "derived" constraints of the instance, and use these properties to 
+        ensure that one does not get any contradictions beyond the one that is already prohibited by expansion. Then, it would be quite cool if I can do an analogous factorization in the proof of positivity 
+ 
+    
+
+      <!-- keep writing freely -->
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab.</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
