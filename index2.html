@@ -1,0 +1,503 @@
+<!--
+Simple, lotech personal website template
+- Single HTML file, no build tools, no JS required
+- Host anywhere (GitHub Pages, Netlify, your server)
+- Edit text below; keep sections you want, delete the rest
+- Replace YOUR_NAME, links, and sample content
+
+HOW TO USE
+1) Save as index.html
+2) Drop it into your web root or a GitHub Pages repo
+3) Search for TODO and fill things in
+
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kareem Diab — Research & Projects</title>
+  <meta name="description" content="Research interests, projects, videos, and art by Kareem Diab." />
+  <meta property="og:title" content="Kareem Diab — Research & Projects" />
+  <meta property="og:description" content="Research interests, projects, videos, and art by Kareem Diab." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" /> <!-- Optional: add an image -->
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg: #ffffff; --fg: #111111; --muted: #555; --link: #0a66c2; --border:#e5e5e5;
+      --max: 820px; --radius: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b0c0f; --fg:#ececec; --muted:#a2a2a2; --link:#7ab7ff; --border:#1e232b; }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--fg);
+      display: flex; flex-direction: column;
+    }
+    header, main, footer { width: 100%; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 24px; }
+    header .wrap { padding-top: 36px; }
+
+    /* Nav */
+    nav { display: flex; gap: 16px; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--link); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); }
+    nav a:hover { background: var(--border); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 3.5vw, 42px); margin: 0 0 6px; line-height: 1.2; }
+    .hero p { margin: 0; color: var(--muted); }
+    /* add these */
+    .avatar-wrap {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.5);     /* <-- zoom amount (1.0 = no zoom) */
+      transform-origin: center;
+      border: 0;                 /* border is on the wrap now */
+    }
+
+
+    /* Sections */
+    section { margin-top: 40px; }
+    section h2 { font-size: 20px; margin: 0 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .card { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+
+    /* Lists */
+    .list { display: grid; gap: 12px; }
+    .pub { display: grid; gap: 4px; }
+    .pub .meta { color: var(--muted); font-size: 14px; }
+
+    /* Grid gallery */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    figure { margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    figure img { width: 100%; display: block; }
+    figure figcaption { padding: 8px 10px; font-size: 14px; color: var(--muted); }
+
+    /* Video embeds */
+    .video {
+      position: relative;
+      width: 320px;        /* fixed width, tweak as you like */
+      aspect-ratio: 16/9;  /* keeps the correct ratio */
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      flex: 0 0 auto;      /* so it doesn’t stretch in flexbox */
+    }
+
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory; /* optional: nice snapping */
+    }
+
+    .video-row .video {
+      scroll-snap-align: start;
+    }
+
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 32px; height: 32px;
+      background: white;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+
+
+    /* Footer */
+    footer { margin-top: auto; border-top: 1px solid var(--border); }
+    .small { font-size: 14px; color: var(--muted); }
+
+    /* Utility */
+    a { color: var(--link); }
+    .muted { color: var(--muted); }
+    .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="hero">
+      <div class="row">
+        <div class="avatar-wrap">
+          <img class="avatar" src="/profile_pic_2.jpg" alt="Portrait of Kareem Diab" />
+        </div>
+        <div>
+          <h1>Kareem Diab</h1>
+          <p>Research Interests: Quantum Complexity Theory, Quantum Algorithms, Semidefinite Programming Hierarchies</p>
+
+
+          <p style="margin-top: 1.2em;">
+            
+            <i>"Quantum Mechanics: Real black magic calculus."</i><br>
+            <span style="display:block; text-align:right; font-size:0.95em;">— Albert Einstein</span>
+          </p>
+    
+        
+          </p>
+          <nav aria-label="Primary">
+            <a href="#research">Research</a>
+            <!-- <a href="#projects">Projects</a> -->
+            <a href="#videos">Videos</a>
+            <a href="#art">Art</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Research / Publications -->
+   <section id="research">
+  <h2>Research</h2>
+
+  <div class="research-intro">
+    <p>
+      My research interests are primarily about two different areas of theoretical computer science. 
+      The first is the study of powerful optimization algorithms called <strong>semidefinite programming hierarchies</strong>,
+       which are among the best known tools for solving hard combinatorial problems. 
+       <strong>The Sum-of-Squares Hierarchy(SoS)</strong> is one such algorithm, which aims to prove that a given polynomial is 
+       nonnegative, by expressing it as a sum of squares. A central question is: when does SoS fundamentally fail, 
+       and why?
+    </p>
+    <p>
+      The second area is <strong>quantum complexity theory</strong>, which is the study of the capabilities and limitations of 
+      quantum computers. A landmark recent result called the NLTS theorem, showed that there exist hamiltonians 
+      (quantum systems), with low-energy states that no shallow quantum circuit can prepare. Surprisingly, 
+      the proof uses the same mathematical structure (expander graphs) that explains why SoS fails on certain hard 
+      instances.
+    </p>
+    <p>
+      My current work explores this connection. I construct quantum Hamiltonians directly 
+      from the hard instances that break SoS, and ask whether the classical hardness 
+      survives in the quantum setting. If it does, these Hamiltonians 
+      may be hard for both shallow quantum circuits and powerful classical optimization 
+      algorithms simultaneously. This question is deeply motivated by the <a href="notes/Quantum_PCP_Conjecture.html">quantum PCP conjecture.</a>
+    </p>
+  </div>
+
+  <h3 style="margin-top: 2em; margin-bottom: 0.8em;">Projects</h3>
+
+  <div class="card list">
+    <div><strong>Lifting SoS Integrality Gaps to Two-Basis Hamiltonians</strong></div>
+    <div class="muted" style="margin-top: 0.5em;">
+      Investigates whether classical SoS lower bounds (integrality gaps) lift to 
+      non-commutative SoS lower bounds for CSS-type Hamiltonians built from the same 
+      constraint structure, with connections to quantum error correction and the NLTS theorem.
+    </div>
+    <div style="margin-top: 0.6em;">
+      <a href="/notes/tqc_abstract.pdf">Abstract</a>
+      &nbsp;·&nbsp;
+      <a href="/notes/tqc_summary.pdf">Technical summary</a>
+    </div>
+  </div>
+
+</section>
+ <section id="notes">
+  <h2>Research Notes & Logs</h2>
+  <div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <strong><a href="/notes/sos-nlts-log.html" style="font-size: 1.1em;">SoS/NLTS Project Log</a></strong>
+      <span class="meta">Updated: April 22, 2026</span>
+    </div>
+    <p class="muted" style="margin: 8px 0;">
+      A daily record of thoughts on the SoS/NLTS project.
+    </p>
+    <nav style="gap: 8px; font-size: 0.85em; margin-top: 10px;">
+      <span class="meta">Recent entries:</span>
+      <!-- <a href="/notes/SoS_5.html">Apr 22</a>
+      <a href="/notes/SoS_4.html">Apr 21</a>
+      <a href="/notes/SoS_3.html">Apr 20</a>
+      <a href="/notes/SoS_Notes2.html">Apr 19</a>
+      <a href="/notes/SoS_Notes1.html">Apr 18</a> -->
+
+
+
+    </nav>
+  </div>
+
+  <div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <strong><a href="/notes/sos-nlts-log.html" style="font-size: 1.1em;">QMA(2)</a></strong>
+      <span class="meta">Updated: Sep 19, 2026</span>
+    </div>
+    <p class="muted" style="margin: 8px 0;">
+      Things related to the complexity class QMA(2), which is like QMA with two unentangled provers. 
+    </p>
+    <nav style="gap: 8px; font-size: 0.85em; margin-top: 10px;">
+      <span class="meta">Recent entries:</span>
+      <a href="/notes/SoS_4.html">Apr 21</a>
+
+
+
+    </nav>
+  </div>
+
+  
+</section>
+
+    
+  
+
+    <!-- Projects -->
+    <!-- <section id="projects">
+      <h2>Projects</h2>
+      <div class="card list">
+        <div>
+          <strong>Quantum Matrix Multiplier</strong> — This is a python simulation of a quantum circuit implementation to multiply to nxn matrices. The circuit itself does not give much of a speedup but the python classes are useful to simulate other circuits out of 1 and 2-qubit gates. <a href="https://github.com/kareemdiab/QuantumMatrixMultiplier">repo</a>
+        </div>
+     
+      </div>
+    </section> -->
+
+    <!-- Videos (YouTube embeds) -->
+    <section id="videos">
+      <h2>Youtube Playlists</h2>
+      <div class="list">
+        <div class="video">Quantum Mechanics Playlist
+          <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRep20Hay8dQVi_rRz4YIMeV"
+          title="YouTube playlist"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+      </iframe>
+
+        </div>
+
+        <div class="video">Quantum Computing Playlist
+          <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRf0ItQmufoRl4BnslallRSk"
+          title="YouTube playlist"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+      </iframe>
+
+        </div>
+
+        <div class="video">Topology Playlist
+          <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRfRTpu16Qs59OQ7VIR0olRQ"
+          title="YouTube playlist"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+      </iframe>
+
+        </div>
+       
+      
+    </section>
+
+    <!-- Art gallery -->
+    <!-- <section id="art">
+      <h2>Art</h2>
+      <div class="grid">
+        <figure>
+          <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+          <figcaption>Eye, 2024.</figcaption>
+        </figure>
+      
+      </div>
+    </section>
+    
+    <section id="art">
+      <h2>Astrophotography</h2>
+      <div class="grid">
+        <figure>
+          <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+          <figcaption>Helix Nebula, 2025.</figcaption>
+        </figure>
+       
+      </div>
+    </section> -->
+
+    <section id="art">
+      <h2>Drawings/Paintings</h2>
+      <div class="grid">
+        <a href="#art1">
+          <figure>
+            <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+            <figcaption>Eye, 2025</figcaption>
+          </figure>
+        </a>
+    
+      </div>
+    </section>
+    <section id="art">
+      <h2>Astrophotography</h2>
+      <div class="grid">
+        <a href="#art2">
+          <figure>
+            <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+            <figcaption>Helix Nebula, 1375.</figcaption>
+          </figure>
+        </a>
+        <a href="#art3">
+          <figure>
+            <img src="/astro/andromeda.JPG" alt="andromeda_galaxy" />
+            <figcaption>Andromeda Galaxy, 2,497,975 BCE.</figcaption>
+          </figure>
+        </a>
+        <a href="#art4">
+          <figure>
+            <img src="/astro/moon_astro.jpg" alt="moon_astro" />
+            <figcaption>Moon, 2025.</figcaption>
+          </figure>
+        </a>
+    
+      </div>
+    </section>
+
+    <div class="lightbox" id="art1">
+      <a href="#art" class="close"></a>
+      <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+    </div>
+    <div class="lightbox" id="art2">
+      <a href="#art" class="close"></a>
+      <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+    </div>
+    <div class="lightbox" id="art3">
+      <a href="#art" class="close"></a>
+      <img src="/astro/andromeda.JPG" alt="andromeda_galaxy" />
+    </div>
+    <div class="lightbox" id="art4">
+      <a href="#art" class="close"></a>
+      <img src="/astro/moon_astro.jpg" alt="moon_astro" />
+    </div>
+
+    <!-- Contact / Links -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:kareem.diab@gmail.com.com">kareem.diab@gmail.com</a></p>
+        <p>Elsewhere: <a rel="me" href="https://github.com/kareemdiab">GitHub</a> · <a href="https://www.youtube.com/@hilberts13">YouTube</a> · <a href="https://scholar.google.com/citations?user=XXXX">Scholar</a> </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="small">© <span id="y"></span> Kareem Diab. Built with plain HTML & CSS. <a href="#top">Back to top</a></p>
+  </footer>
+
+  <script>
+    // Optional: update year, works without JS if disabled
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+  </script>
+</body>
+</html>
