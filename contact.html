@@ -1,26 +1,171 @@
-<main class="wrap">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <section>
-    <h2>Contact</h2>
+  <title>Contact — Kareem Diab</title>
+  <meta name="description" content="Contact information for Kareem Diab." />
 
-    <div class="card">
-      <p>
-        Email:
-        <a href="mailto:kareem.diab@gmail.com">
-          kareem.diab@gmail.com
-        </a>
-      </p>
+  <link rel="icon" href="/favicon.ico" />
 
-      <p>
-        Elsewhere:
-        <a rel="me" href="https://github.com/kareemdiab">GitHub</a>
-        ·
-        <a href="https://www.youtube.com/@hilberts13">YouTube</a>
-        ·
-        <a href="https://scholar.google.com/citations?user=XXXX">Scholar</a>
-      </p>
-    </div>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555;
+      --link: #0a66c2;
+      --border: #e5e5e5;
+      --max: 820px;
+      --radius: 14px;
+    }
 
-  </section>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0f;
+        --fg: #ececec;
+        --muted: #a2a2a2;
+        --link: #7ab7ff;
+        --border: #1e232b;
+      }
+    }
 
-</main>
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header .wrap {
+      padding-top: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    nav a:hover {
+      background: var(--border);
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin: 0 0 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .site-title {
+      margin: 0 0 16px;
+    }
+
+    .site-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="wrap">
+    <h1 class="site-title">
+      <a href="index.html">Kareem Diab</a>
+    </h1>
+
+    <nav aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="videos.html">Videos</a>
+      <a href="art.html">Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>Contact</h2>
+
+      <div class="card">
+
+        <p>
+          Email:
+          <a href="mailto:kareem.diab@gmail.com">
+            kareem.diab@gmail.com
+          </a>
+        </p>
+
+        <p>
+          Elsewhere:
+          <a rel="me" href="https://github.com/kareemdiab">GitHub</a>
+          ·
+          <a href="https://www.youtube.com/@hilberts13">YouTube</a>
+          ·
+          <a href="https://scholar.google.com/citations?user=XXXX">Scholar</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap">
+    <p class="small">
+      © <span id="y"></span> Kareem Diab. Built with plain HTML & CSS.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

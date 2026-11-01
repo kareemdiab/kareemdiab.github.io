@@ -1,40 +1,278 @@
-<main class="wrap">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <section id="research">
-    <h2>Research</h2>
+  <title>Research — Kareem Diab</title>
+  <meta name="description" content="Research and projects by Kareem Diab." />
 
-    <div class="research-intro">
-      <!-- Your existing research paragraphs go here -->
-    </div>
+  <link rel="icon" href="/favicon.ico" />
 
-    <h3 style="margin-top: 2em; margin-bottom: 0.8em;">
-      Projects
-    </h3>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555;
+      --link: #0a66c2;
+      --border: #e5e5e5;
+      --max: 820px;
+      --radius: 14px;
+    }
 
-    <div class="card list">
-      <div>
-        <strong>
-          Lifting SoS Integrality Gaps to Two-Basis Hamiltonians
-        </strong>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0f;
+        --fg: #ececec;
+        --muted: #a2a2a2;
+        --link: #7ab7ff;
+        --border: #1e232b;
+      }
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header .wrap {
+      padding-top: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    nav a:hover {
+      background: var(--border);
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin: 0 0 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .site-title {
+      margin: 0 0 16px;
+    }
+
+    .site-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="wrap">
+    <h1 class="site-title">
+      <a href="index.html">Kareem Diab</a>
+    </h1>
+
+    <nav aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="videos.html">Videos</a>
+      <a href="art.html">Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>Research</h2>
+
+      <div class="research-intro">
+        <p>
+          My research interests are primarily about two different areas of
+          theoretical computer science. The first is the study of powerful
+          optimization algorithms called
+          <strong>semidefinite programming hierarchies</strong>, which are
+          among the best known tools for solving hard combinatorial problems.
+          <strong>The Sum-of-Squares Hierarchy (SoS)</strong> is one such
+          algorithm, which aims to prove that a given polynomial is
+          nonnegative, by expressing it as a sum of squares. A central question
+          is: when does SoS fundamentally fail, and why?
+        </p>
+
+        <p>
+          The second area is <strong>quantum complexity theory</strong>, which
+          is the study of the capabilities and limitations of quantum computers.
+          A landmark recent result called the NLTS theorem showed that there
+          exist Hamiltonians (quantum systems), with low-energy states that no
+          shallow quantum circuit can prepare. Surprisingly, the proof uses the
+          same mathematical structure (expander graphs) that explains why SoS
+          fails on certain hard instances.
+        </p>
+
+        <p>
+          My current work explores this connection. I construct quantum
+          Hamiltonians directly from the hard instances that break SoS, and ask
+          whether the classical hardness survives in the quantum setting. If it
+          does, these Hamiltonians may be hard for both shallow quantum circuits
+          and powerful classical optimization algorithms simultaneously. This
+          question is deeply motivated by the
+          <a href="notes/Quantum_PCP_Conjecture.html">
+            quantum PCP conjecture
+          </a>.
+        </p>
       </div>
 
-      <div class="muted" style="margin-top: 0.5em;">
-        Investigates whether classical SoS lower bounds...
+      <h3 style="margin-top: 2em; margin-bottom: 0.8em;">
+        Projects
+      </h3>
+
+      <div class="card list">
+        <div>
+          <strong>
+            Lifting SoS Integrality Gaps to Two-Basis Hamiltonians
+          </strong>
+        </div>
+
+        <div class="muted" style="margin-top: 0.5em;">
+          Investigates whether classical SoS lower bounds (integrality gaps)
+          lift to non-commutative SoS lower bounds for CSS-type Hamiltonians
+          built from the same constraint structure, with connections to quantum
+          error correction and the NLTS theorem.
+        </div>
+
+        <div style="margin-top: 0.6em;">
+          <a href="notes/tqc_abstract.pdf">Abstract</a>
+          &nbsp;·&nbsp;
+          <a href="notes/tqc_summary.pdf">Technical summary</a>
+        </div>
       </div>
 
-      <div style="margin-top: 0.6em;">
-        <a href="/notes/tqc_abstract.pdf">Abstract</a>
-        &nbsp;·&nbsp;
-        <a href="/notes/tqc_summary.pdf">Technical summary</a>
+    </section>
+
+    <section>
+      <h2>Research Notes & Logs</h2>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <strong>
+            <a href="notes/sos-nlts-log.html" style="font-size: 1.1em;">
+              SoS/NLTS Project Log
+            </a>
+          </strong>
+          <span class="meta">Updated: April 22, 2026</span>
+        </div>
+
+        <p class="muted" style="margin: 8px 0;">
+          A daily record of thoughts on the SoS/NLTS project.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <section id="notes">
-    <h2>Research Notes & Logs</h2>
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <strong>
+            <a href="notes/sos-nlts-log.html" style="font-size: 1.1em;">
+              QMA(2)
+            </a>
+          </strong>
+          <span class="meta">Updated: Sep 19, 2026</span>
+        </div>
 
-    <!-- Copy your existing notes cards here -->
+        <p class="muted" style="margin: 8px 0;">
+          Things related to the complexity class QMA(2), which is like QMA with
+          two unentangled provers.
+        </p>
 
-  </section>
+        <nav style="gap: 8px; font-size: 0.85em; margin-top: 10px;">
+          <span class="meta">Recent entries:</span>
+          <a href="notes/SoS_4.html">Apr 21</a>
+        </nav>
+      </div>
 
-</main>
+    </section>
+
+  </main>
+
+  <footer class="wrap">
+    <p class="small">
+      © <span id="y"></span> Kareem Diab. Built with plain HTML & CSS.
+      <a href="#top">Back to top</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

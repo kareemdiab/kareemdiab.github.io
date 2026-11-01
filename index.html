@@ -3,18 +3,154 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kareem Diab — Research & Projects</title>
 
-  <!-- Put your existing CSS here -->
+  <title>Kareem Diab — Research & Projects</title>
+  <meta name="description" content="Research interests, projects, videos, and art by Kareem Diab." />
+
+  <meta property="og:title" content="Kareem Diab — Research & Projects" />
+  <meta property="og:description" content="Research interests, projects, videos, and art by Kareem Diab." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555;
+      --link: #0a66c2;
+      --border: #e5e5e5;
+      --max: 820px;
+      --radius: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0f;
+        --fg: #ececec;
+        --muted: #a2a2a2;
+        --link: #7ab7ff;
+        --border: #1e232b;
+      }
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header .wrap {
+      padding-top: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    nav a:hover {
+      background: var(--border);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      margin: 0 0 6px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .avatar-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.5);
+      transform-origin: center;
+      border: 0;
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 
 <body>
+
   <header class="wrap">
     <div class="hero">
       <div class="row">
+
         <div class="avatar-wrap">
-          <img class="avatar" src="/profile_pic_2.jpg"
-               alt="Portrait of Kareem Diab" />
+          <img
+            class="avatar"
+            src="/profile_pic_2.jpg"
+            alt="Portrait of Kareem Diab"
+          />
         </div>
 
         <div>
@@ -33,20 +169,26 @@
           </p>
 
           <nav aria-label="Primary">
-            <a href="/research.html">Research</a>
-            <a href="/videos.html">Videos</a>
-            <a href="/art.html">Art</a>
-            <a href="/contact.html">Contact</a>
+            <a href="research.html">Research</a>
+            <a href="videos.html">Videos</a>
+            <a href="art.html">Art</a>
+            <a href="contact.html">Contact</a>
           </nav>
         </div>
+
       </div>
     </div>
   </header>
 
   <footer class="wrap">
     <p class="small">
-      © 2026 Kareem Diab. Built with plain HTML & CSS.
+      © <span id="y"></span> Kareem Diab. Built with plain HTML & CSS.
     </p>
   </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

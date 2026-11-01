@@ -1,35 +1,213 @@
-<main class="wrap">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <section>
-    <h2>YouTube Playlists</h2>
+  <title>Videos — Kareem Diab</title>
+  <meta name="description" content="Quantum mechanics, quantum computing, and topology videos by Kareem Diab." />
 
-    <div class="list">
+  <link rel="icon" href="/favicon.ico" />
 
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRep20Hay8dQVi_rRz4YIMeV"
-          title="Quantum Mechanics Playlist"
-          allowfullscreen>
-        </iframe>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555;
+      --link: #0a66c2;
+      --border: #e5e5e5;
+      --max: 820px;
+      --radius: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0f;
+        --fg: #ececec;
+        --muted: #a2a2a2;
+        --link: #7ab7ff;
+        --border: #1e232b;
+      }
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header .wrap {
+      padding-top: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    nav a:hover {
+      background: var(--border);
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin: 0 0 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .video {
+      width: 100%;
+      max-width: 640px;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .site-title {
+      margin: 0 0 16px;
+    }
+
+    .site-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .playlist-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="wrap">
+    <h1 class="site-title">
+      <a href="index.html">Kareem Diab</a>
+    </h1>
+
+    <nav aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="videos.html">Videos</a>
+      <a href="art.html">Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>YouTube Playlists</h2>
+
+      <div class="list">
+
+        <div>
+          <h3 class="playlist-title">Quantum Mechanics</h3>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRep20Hay8dQVi_rRz4YIMeV"
+              title="Quantum Mechanics Playlist"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="playlist-title">Quantum Computing</h3>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRf0ItQmufoRl4BnslallRSk"
+              title="Quantum Computing Playlist"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="playlist-title">Topology</h3>
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRfRTpu16Qs59OQ7VIR0olRQ"
+              title="Topology Playlist"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRf0ItQmufoRl4BnslallRSk"
-          title="Quantum Computing Playlist"
-          allowfullscreen>
-        </iframe>
-      </div>
+  </main>
 
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/videoseries?list=PL6RLG6crmHRfRTpu16Qs59OQ7VIR0olRQ"
-          title="Topology Playlist"
-          allowfullscreen>
-        </iframe>
-      </div>
+  <footer class="wrap">
+    <p class="small">
+      © <span id="y"></span> Kareem Diab. Built with plain HTML & CSS.
+    </p>
+  </footer>
 
-    </div>
-  </section>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 
-</main>
+</body>
+</html>

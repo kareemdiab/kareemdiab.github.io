@@ -1,53 +1,272 @@
-<section id="drawings">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Art — Kareem Diab</title>
+  <meta name="description" content="Drawings, paintings, and astrophotography by Kareem Diab." />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555;
+      --link: #0a66c2;
+      --border: #e5e5e5;
+      --max: 820px;
+      --radius: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0f;
+        --fg: #ececec;
+        --muted: #a2a2a2;
+        --link: #7ab7ff;
+        --border: #1e232b;
+      }
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, main, footer {
+      width: 100%;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header .wrap {
+      padding-top: 36px;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--link);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    nav a:hover {
+      background: var(--border);
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin: 0 0 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    figure {
+      margin: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+    }
+
+    figure figcaption {
+      padding: 8px 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .grid a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .site-title {
+      margin: 0 0 16px;
+    }
+
+    .site-title a {
+      color: var(--fg);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="wrap">
+    <h1 class="site-title">
+      <a href="index.html">Kareem Diab</a>
+    </h1>
+
+    <nav aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="videos.html">Videos</a>
+      <a href="art.html">Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section id="drawings">
       <h2>Drawings/Paintings</h2>
+
       <div class="grid">
         <a href="#art1">
           <figure>
-            <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+            <img src="/art/eye_drawing.jpg" alt="Eye drawing" />
             <figcaption>Eye, 2025</figcaption>
           </figure>
         </a>
-    
       </div>
     </section>
+
     <section id="astrophotography">
       <h2>Astrophotography</h2>
+
       <div class="grid">
+
         <a href="#art2">
           <figure>
-            <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+            <img src="/astro/helix_nebula.png" alt="Helix Nebula" />
             <figcaption>Helix Nebula, 1375.</figcaption>
           </figure>
         </a>
+
         <a href="#art3">
           <figure>
-            <img src="/astro/andromeda.JPG" alt="andromeda_galaxy" />
+            <img src="/astro/andromeda.JPG" alt="Andromeda Galaxy" />
             <figcaption>Andromeda Galaxy, 2,497,975 BCE.</figcaption>
           </figure>
         </a>
+
         <a href="#art4">
           <figure>
-            <img src="/astro/moon_astro.jpg" alt="moon_astro" />
+            <img src="/astro/moon_astro.jpg" alt="Moon" />
             <figcaption>Moon, 2025.</figcaption>
           </figure>
         </a>
-    
+
       </div>
     </section>
 
     <div class="lightbox" id="art1">
-      <a href="#art" class="close"></a>
-      <img src="/art/eye_drawing.jpg" alt="eye_drawing" />
+      <a href="#drawings" class="close" aria-label="Close"></a>
+      <img src="/art/eye_drawing.jpg" alt="Eye drawing" />
     </div>
+
     <div class="lightbox" id="art2">
-      <a href="#art" class="close"></a>
-      <img src="/astro/helix_nebula.png" alt="helix_nebula" />
+      <a href="#astrophotography" class="close" aria-label="Close"></a>
+      <img src="/astro/helix_nebula.png" alt="Helix Nebula" />
     </div>
+
     <div class="lightbox" id="art3">
-      <a href="#art" class="close"></a>
-      <img src="/astro/andromeda.JPG" alt="andromeda_galaxy" />
+      <a href="#astrophotography" class="close" aria-label="Close"></a>
+      <img src="/astro/andromeda.JPG" alt="Andromeda Galaxy" />
     </div>
+
     <div class="lightbox" id="art4">
-      <a href="#art" class="close"></a>
-      <img src="/astro/moon_astro.jpg" alt="moon_astro" />
+      <a href="#astrophotography" class="close" aria-label="Close"></a>
+      <img src="/astro/moon_astro.jpg" alt="Moon" />
     </div>
+
+  </main>
+
+  <footer class="wrap">
+    <p class="small">
+      © <span id="y"></span> Kareem Diab. Built with plain HTML & CSS.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
